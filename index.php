@@ -1,11 +1,17 @@
 <?php
-    echo $_SERVER['REQUEST_METHOD'];
-    echo '<pre>';
-    print_r($_POST);
-    echo '<pre>';
+
+    include_once('functions.php');
+
+    $articles = getArticles();
+
+
 ?>
-<form method="post">
-    <input type="text" name="a">
-    <input type="text" name="b">
-    <button>Send</button>
-</form>
+
+<div class="articles">
+    <? foreach ($articles as $id => $article): ?>
+        <div class="article">
+            <h2><?=$article['title']?></h2>
+            <a href="index.php?id=<?=$article['id']?>">Read more</a>
+        </div>
+    <? endforeach; ?>
+</div>
