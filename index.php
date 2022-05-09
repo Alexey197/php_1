@@ -1,9 +1,11 @@
 <?php
 
+    declare(strict_types=1);
     include_once('functions.php');
 
     $articles = getArticles();
 
+    var_dump(checkId($_GET['id'] ?? ''));
 
 ?>
 
@@ -31,7 +33,7 @@
   let errorBox = document.querySelector('.err');
 
   form.addEventListener('submit', function(e){
-    e.preventDefault();
+    // e.preventDefault();
 
     let formData = new FormData(form);
 
@@ -43,7 +45,7 @@
     .then(response => response.json())
     .then(data => {
       if (data.res) {
-        form.innerHTML = 'Your app is done!'
+        form.innerHTML = 'Your app is done!!!'
       }
       else {
         errorBox.innerHTML = data.error
