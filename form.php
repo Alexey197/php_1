@@ -6,7 +6,6 @@
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $name = trim($_POST['name']);
       $phone = trim($_POST['phone']);
-      $dt = date("Y-d-m H:i:s");
 
       if ($name === '' || $phone === '') {
         $err = 'Заполните все поля!';
@@ -15,6 +14,7 @@
           $err = 'Имя не короче 2 символов';
       }
       else {
+          $dt = date("Y-d-m H:i:s");
           $mailBody = "$dt\n$phone\n$name";
           mail('margadonn@ya.ru', 'New app on site', $mailBody);
           $isSend = true;
