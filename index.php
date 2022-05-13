@@ -1,55 +1,42 @@
 <?php
 
-    declare(strict_types=1);
-    include_once('functions.php');
+include_once('model/apps.php');
 
-    $articles = getArticles();
+$isSend = false;
+$err = '';
 
-    var_dump(checkId($_GET['id'] ?? ''));
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name = trim($_POST['name']);
+    $phone = trim($_POST['phone']);
+
+    if ($name === '' || $phone === '') {
+        $err = 'Заполните все поля!';
+    }
+    elseif (mb_strlen($name, 'UTF8') < 2) {
+        $err = 'Имя не короче 2 символов';
+    }
+    else {
+        addApp($name, $phone);
+        $isSend = true;
+    }
+}
+else {
+    $name = '';
+    $phone = '';
+}
 
 ?>
-
-<div class="articles">
-    <? foreach ($articles as $id => $article): ?>
-        <div class="article">
-            <h2><?=$article['title']?></h2>
-            <a href="index.php?id=<?=$article['id']?>">Read more</a>
-        </div>
-    <? endforeach; ?>
-</div>
-
 <div class="form">
-      <form class="appForm" method="post">
+    <? if ($isSend): ?>
+      <p>Your app is done!</p>
+    <? else: ?>
+      <form method="post">
         Name:<br>
-        <input type="text" name="name"><br>
+        <input type="text" name="name" value="<?=$name?>"><br>
         Phone:<br>
-        <input type="text" name="phone"><br>
+        <input type="text" name="phone" value="<?=$phone?>"><br>
         <button>Send</button>
-        <p class="err"></p>
+        <p><?=$err?></p>
       </form>
+    <? endif; ?>
 </div>
-<script>
-  let form = document.querySelector('.appForm');
-  let errorBox = document.querySelector('.err');
-
-  form.addEventListener('submit', function(e){
-    // e.preventDefault();
-
-    let formData = new FormData(form);
-
-
-    fetch('send.php', {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.res) {
-        form.innerHTML = 'Your app is done!!!'
-      }
-      else {
-        errorBox.innerHTML = data.error
-      }
-    })
-  });
-</script>
