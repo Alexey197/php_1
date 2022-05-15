@@ -28,15 +28,15 @@ else {
 ?>
 <div class="form">
     <? if ($isSend): ?>
-      <p>Your app is done!</p>
+        <p>Your app is done!</p>
     <? else: ?>
-      <form method="post">
-        Name:<br>
-        <input type="text" name="name" value="<?=$name?>"><br>
-        Phone:<br>
-        <input type="text" name="phone" value="<?=$phone?>"><br>
-        <button>Send</button>
-        <p><?=$err?></p>
-      </form>
+        <form method="post">
+            Name:<br>
+            <input type="text" name="name" value="<?=$name?>"><br>
+            Phone:<br>
+            <input type="text" name="phone" value="<?=$phone?>"><br>
+            <button>Send</button>
+            <p><?=$err?></p>
+        </form>
     <? endif; ?>
 </div>
