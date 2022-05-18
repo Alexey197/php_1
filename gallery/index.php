@@ -1,8 +1,10 @@
 <?php
 
+    include_once('model/gallery.php');
+
     $files = scandir('images');
     $images = array_filter($files, function ($f){
-        return is_file("images/$f") && preg_match('/.*\.jpg$/', $f);
+        return is_file("images/$f") && checkImageName($f);
     });
 /*
     foreach ($files as $f){
@@ -11,10 +13,7 @@
         }
     }
 */
-//    echo '<pre>';
-//    print_r($files);
-//    print_r($images);
-//    echo '</pre>';
+
 ?>
 <div class="gallery">
     <? foreach ($images as $img): ?>
