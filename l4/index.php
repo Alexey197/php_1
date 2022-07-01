@@ -1,20 +1,10 @@
 <?php
 
-$db = new PDO('mysql:host=localhost;dbname=php1simple', 'root', 'root', [
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-]);
-$db->exec('SET NAMES UTF8');
+include_once('model/db.php');
+$db = dbInstance();
 
 $sql = "SELECT * FROM messages ORDER BY dt_add DESC";
-
-$query = $db->prepare($sql);
-$query->execute();
-$errInfo = $query->errorInfo();
-
-if($errInfo[0] !== PDO::ERR_NONE){
-    echo $errInfo[2];
-    exit();
-}
+$query= dbQuery($sql);
 
 $messages = $query->fetchAll();
 ?>

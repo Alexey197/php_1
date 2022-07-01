@@ -1,7 +1,7 @@
 <?php
 
-    $db = new PDO('mysql:host=localhost;dbname=php1simple', 'root', 'root');
-    $db->exec('SET NAMES UTF8');
+include_once('model/db.php');
+$db = dbInstance();
 
     $fields = ['name' => '', 'text' => ''];
     $err = '';
@@ -15,23 +15,10 @@
         }
         else {
             $sql = "INSERT messages (name, text) VALUES (:name, :text)";
-
-            $query = $db->prepare($sql);
-            $query->execute($fields);
-            $errInfo = $query->errorInfo();
-
-            if($errInfo[0] !== PDO::ERR_NONE){
-                echo $errInfo[2];
-                exit();
-            }
-
+            dbQuery($sql, $fields);
             header('Location: index.php');
             exit();
         }
-    }
-    else {
-        $name = '';
-        $text = '';
     }
 
     ?>
