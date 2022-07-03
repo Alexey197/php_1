@@ -1,7 +1,6 @@
 <?php
 
-include_once('model/db.php');
-$db = dbInstance();
+include_once('model/messages.php');
 
     $fields = ['name' => '', 'text' => ''];
     $err = '';
@@ -14,8 +13,7 @@ $db = dbInstance();
             $err = 'Заполните все поля!';
         }
         else {
-            $sql = "INSERT messages (name, text) VALUES (:name, :text)";
-            dbQuery($sql, $fields);
+            messagesAdd($fields);
             header('Location: index.php');
             exit();
         }
