@@ -1,11 +1,16 @@
 <?php
 
 function dbInstance() : PDO {
-    $db = new PDO('mysql:host=localhost;dbname=php1simple', 'root', 'root', [
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-    ]);
+    static $db;
 
-    $db->exec('SET NAMES UTF8');
+    if ($db === null) {
+        $db = new PDO('mysql:host=localhost;dbname=php1simple', 'root', 'root', [
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+        ]);
+
+        $db->exec('SET NAMES UTF8');
+    }
+    
     return $db;
 }
 
