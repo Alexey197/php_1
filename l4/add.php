@@ -1,6 +1,7 @@
 <?php
 
 include_once('model/messages.php');
+include_once('model/db.php');
 
     $fields = ['name' => '', 'text' => ''];
     $err = '';
@@ -14,7 +15,8 @@ include_once('model/messages.php');
         }
         else {
             messagesAdd($fields);
-            header('Location: index.php');
+            $id = dbLastId();
+            header("Location: message.php?id=$id");
             exit();
         }
     }
