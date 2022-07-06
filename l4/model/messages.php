@@ -9,7 +9,7 @@ function messagesAll() : array {
 }
 
 function messagesAdd(array $fields) : bool {
-    $sql = "INSERT messages (name, text) VALUES (:name, :text)";
+    $sql = "INSERT INTO messages (name, text, id_cat) VALUES (:name, :text, :id_cat)";
     $query = dbQuery($sql, $fields);
     return true;
 }
