@@ -14,6 +14,13 @@ function messagesAdd(array $fields) : bool {
     return true;
 }
 
+function messagesOne(int $id){
+    $sql = "SELECT * FROM messages WHERE id_message=:id";
+    $query = dbQuery($sql, ['id' => $id]);
+    return $query->fetch();
+}
+
+
 //declare(strict_types=1)
 /*
 function messagesOne(int $id) : ?array{
@@ -23,9 +30,3 @@ function messagesOne(int $id) : ?array{
     return is_array($article) ? $article : null;
 }
 */
-
-function messagesOne(int $id){
-    $sql = "SELECT * FROM messages WHERE id_message=:id";
-    $query = dbQuery($sql, ['id' => $id]);
-    return $query->fetch();
-}
