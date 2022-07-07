@@ -9,7 +9,24 @@ function messagesAll() : array {
 }
 
 function messagesAdd(array $fields) : bool {
-    $sql = "INSERT messages (name, text) VALUES (:name, :text)";
-    dbQuery($sql, $fields);
+    $sql = "INSERT INTO messages (name, text, id_cat) VALUES (:name, :text, :id_cat)";
+    $query = dbQuery($sql, $fields);
     return true;
 }
+
+function messagesOne(int $id){
+    $sql = "SELECT * FROM messages WHERE id_message=:id";
+    $query = dbQuery($sql, ['id' => $id]);
+    return $query->fetch();
+}
+
+
+//declare(strict_types=1)
+/*
+function messagesOne(int $id) : ?array{
+    $sql = "SELECT * FROM messages WHERE id_message=:id";
+    $query = dbQuery($sql, ['id' => $id]);
+    $article = $query->fetch();
+    return is_array($article) ? $article : null;
+}
+*/
