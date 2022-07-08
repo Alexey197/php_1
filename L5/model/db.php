@@ -32,8 +32,3 @@ function dbCheckError(PDOStatement $query): bool {
 
     return true;
 }
-
-function dbLastId() : string{
-    $db = dbInstance();
-    return $db->lastInsertId();
-}
