@@ -1,6 +1,6 @@
 <?php
 
-include_once('model/db.php');
+include_once('core/db.php');
 
 function messagesAll() : array {
     $sql = "SELECT * FROM messages ORDER BY dt_add DESC";
