@@ -13,7 +13,7 @@ $messages = messagesAll();
             <em><?=$message['dt_add']?></em>
             <div>
                 <?=$message['text']?>
-              <a href="message.php?id=$message['id_message']">Read more</a>
+              <a href="message.php?id=<?=$message['id_message']?>">Read more</a>
             </div>
             <hr>
           </div>
