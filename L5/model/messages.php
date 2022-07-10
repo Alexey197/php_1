@@ -14,7 +14,7 @@ function messagesAdd(array $fields) : bool {
     return true;
 }
 
-function messagesValidate(array $fields) : array {
+function messagesValidate(array &$fields) : array {
     $errors = [];
     $textLen = mb_strlen($fields['text'], 'UTF8');
     
@@ -25,6 +25,9 @@ function messagesValidate(array $fields) : array {
     if ($textLen < 10 || $textLen > 140) {
         $errors[] = 'Текст от 10 до 140 символов';
     }
+
+    $fields['name'] = htmlspecialchars( $fields['name']);
+    $fields['text'] = htmlspecialchars($fields['text']);
 
     return $errors;
 }
