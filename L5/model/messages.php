@@ -8,6 +8,12 @@ function messagesAll() : array {
     return $query->fetchAll();
 }
 
+function messagesOne(int $id){
+    $sql = "SELECT * FROM messages WHERE id_message=:id";
+    $query = dbQuery($sql, ['id' => $id]);
+    return $query->fetch();
+}
+
 function messagesAdd(array $fields) : bool {
     $sql = "INSERT INTO messages (name, text) VALUES (:name, :text)";
     $query = dbQuery($sql, $fields);

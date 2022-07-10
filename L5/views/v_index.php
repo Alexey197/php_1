@@ -9,6 +9,9 @@
             <div>
                 <?=$message['text']?>
             </div>
+          <a href="message.php?id=<?=$message['id_message']?>">
+            Read more
+          </a>
             <hr>
         </div>
     <? endforeach; ?>
