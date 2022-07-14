@@ -1,9 +1,11 @@
 <?php
 
-include_once('model/messages.php');
+// logs
 
-$messages = messagesAll();
-$isTable = ($_GET['view'] ?? '') === 'table';
-$template = $isTable ? 'v_index_table' : 'v_index';
+$cname = $_GET['c'] ?? 'index';
+$path = "controllers/$cname.php";
 
-include("views/$template.php");
+// file_exists($path)
+// preg_match $cname 
+
+include_once($path);
