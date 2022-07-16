@@ -1,12 +1,17 @@
-<h1>Chat</h1>
-<a href="index.php">View as list</a>
-<hr>
-<table>
-<? foreach($messages as $message): ?>
-	<tr>
-		<td><?=$message['name']?></td>
-		<td><?=$message['dt_add']?></td>
-		<td>1?0</td>
-	</tr>
-<? endforeach; ?>
-</table>
+<main>
+  <h1>Chat in table</h1>
+  <hr>
+  <a href="index.php">View as list</a>
+  <hr>
+  <table class="table table-border">
+      <tbody>
+      <? foreach($messages as $message): ?>
+        <tr>
+          <td><?=$message['name']?></td>
+          <td><?=$message['dt_add']?></td>
+          <td><?=$message['status']?></td>
+        </tr>
+      <? endforeach; ?>
+      </tbody>
+  </table>
+</main>

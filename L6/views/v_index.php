@@ -1,4 +1,3 @@
-
 <main>
   <h1>All messages</h1>
   <a href="index.php?c=add">add</a> |
