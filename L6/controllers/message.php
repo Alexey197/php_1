@@ -10,10 +10,12 @@ $message = messagesOne($id);
 $hasMsg = $message !== false; // $message !== null;
 
 if($hasMsg){
-	include('views/v_message.php');
+    $pageTitle = $message['name'];
+    $pageContent = template('v_message', [
+        'message' => $message
+    ]);
 }
 else{
 	header('HTTP/1.1 404 Not Found');
-	include('views/errors/v_404.php');
+    $pageContent = template('errors/v_404');
 }
-
