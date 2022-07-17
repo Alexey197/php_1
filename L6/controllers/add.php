@@ -18,4 +18,8 @@ else{
 	$validateErrors = [];
 }
 
-include("views/v_add.php");
+$pageTitle= 'Add message';
+$pageContent = template('messages/v_add', [
+   'fields' => $fields,
+    'validateErrors' => $validateErrors
+]);
