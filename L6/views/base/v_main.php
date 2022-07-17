@@ -24,6 +24,9 @@
       <li class="nav-item">
         <a class="nav-link" href="index.php?c=add">Add</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="index.php?c=contacts">Contacts</a>
+      </li>
     </ul>
   </div>
 </nav>

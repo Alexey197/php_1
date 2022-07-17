@@ -10,9 +10,16 @@ $message = messagesOne($id);
 $hasMsg = $message !== false; // $message !== null;
 
 if($hasMsg){
-    $pageTitle = $message['name'];
-    $pageContent = template('v_message', [
+    $menu = template('messages/v_message_menu');
+    $content = template('messages/v_message', [
         'message' => $message
+    ]);
+
+    $pageTitle = $message['name'];
+    $pageContent = template('base/v_con2col', [
+        'left' => $menu,
+        'content' => $content,
+        'title' => 'One message'
     ]);
 }
 else{

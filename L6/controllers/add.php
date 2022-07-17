@@ -19,7 +19,7 @@ else{
 }
 
 $pageTitle= 'Add message';
-$pageContent = template('v_add', [
+$pageContent = template('messages/v_add', [
    'fields' => $fields,
     'validateErrors' => $validateErrors
 ]);
